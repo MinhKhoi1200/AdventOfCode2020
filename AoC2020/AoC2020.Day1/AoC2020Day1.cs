@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using AoC2020Core;
 
-namespace AoC2020.Day1
+namespace AoC2020
 {
-    public class AoC2020Day1
+    public static class AoC2020Day1
     {
         private static readonly List<int> InputList =
             ReadInput.ConvertInputTextToIntList(@"..\..\..\Inputs\Day1InputText.txt");

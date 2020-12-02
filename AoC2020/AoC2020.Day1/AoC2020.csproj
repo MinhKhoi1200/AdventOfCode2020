@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AoC2020Classes\AoC2020Classes.csproj" />
     <ProjectReference Include="..\AoC2020Core\AoC2020Core.csproj" />
   </ItemGroup>
 
