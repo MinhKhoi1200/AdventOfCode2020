@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AoC2020.Day1\AoC2020.Day1.csproj">
+    <ProjectReference Include="..\AoC2020.Day1\AoC2020.csproj">
       <Project>{cb689c12-2f26-49c4-8803-f2e61542d7a9}</Project>
-      <Name>AoC2020.Day1</Name>
+      <Name>AoC2020</Name>
     </ProjectReference>
     <ProjectReference Include="..\AoC2020Core\AoC2020Core.csproj">
       <Project>{c13dcad5-7f22-4636-a8eb-d57d1f203bf8}</Project>
