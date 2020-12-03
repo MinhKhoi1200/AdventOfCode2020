@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
-namespace AoC2020Classes
+namespace AoC2020Classes.Day2
 {
     public class PasswordItem
     {
@@ -19,14 +18,6 @@ namespace AoC2020Classes
             var convertedPasswordItem = ConvertStringToPasswordItem(inputString);
             PwPolicy = convertedPasswordItem?.PwPolicy;
             Password = convertedPasswordItem?.Password;
-        }
-
-        public PasswordItem ConvertStringToPasswordItem(string inputString)
-        {
-            var slittedPasswordItemString = inputString.Split(':');
-            var passwordPolicy = new PasswordPolicy(slittedPasswordItemString[0]);
-            var password = slittedPasswordItemString[1].Trim();
-            return new PasswordItem(passwordPolicy, password);
         }
 
         public bool ValidateFirstAttempt()
@@ -48,6 +39,14 @@ namespace AoC2020Classes
                           (isUpperLetterMatched && !isLowerLetterMatched);
 
             return isValid;
+        }
+
+        private PasswordItem ConvertStringToPasswordItem(string inputString)
+        {
+            var slittedPasswordItemString = inputString.Split(':');
+            var passwordPolicy = new PasswordPolicy(slittedPasswordItemString[0]);
+            var password = slittedPasswordItemString[1].Trim();
+            return new PasswordItem(passwordPolicy, password);
         }
     }
 }
