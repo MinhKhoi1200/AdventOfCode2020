@@ -7,3 +7,6 @@ Solved!
 
 ### Day 2
 Solved!
+
+### Day 3
+Solved!
