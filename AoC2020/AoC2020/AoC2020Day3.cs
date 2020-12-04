@@ -8,7 +8,8 @@ namespace AoC2020
 {
     public class AoC2020Day3
     {
-        private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day3InputText.txt");
+        private static readonly string[] Delimiter = {"\r\n"};
+        private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day3InputText.txt", Delimiter);
         private static readonly List<List<char>> ConvertedInputList = InputList.ConvertAll(eachRow => eachRow.ToList());
         private static readonly MapGrid MapGrid = new MapGrid(ConvertedInputList);
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace AoC2020Core
 {
@@ -31,20 +32,19 @@ namespace AoC2020Core
             return outputList;
         }
 
-        public static List<string> ConvertInputTextToStringList(string path)
+        public static List<string> ConvertInputTextToStringList(string path, string[] delimiter)
         {
             List<string> outputList = null;
 
             try
             {
-                var sr = new StreamReader(path);
-
-                outputList = new List<string>();
-                string line;
-
-                while ((line = sr.ReadLine()) != null)
+                using (var sr = new StreamReader(path))
                 {
-                    outputList.Add(line);
+                    outputList = new List<string>();
+
+                    var textOutput = sr.ReadToEnd();
+
+                    outputList = textOutput.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList();
                 }
 
             }
