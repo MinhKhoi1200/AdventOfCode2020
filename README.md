@@ -10,3 +10,6 @@ Solved!
 
 ### Day 3
 Solved!
+
+### Day 4
+Solved!
