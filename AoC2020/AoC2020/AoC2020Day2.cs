@@ -8,18 +8,19 @@ namespace AoC2020
 {
     public class AoC2020Day2
     {
-        private static List<string> inputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day2InputText.txt");
-        private static List<PasswordItem> convertedInputList = inputList.ConvertAll(x => new PasswordItem(x)).ToList();
+        private static readonly string[] Delimiter = {"\r\n"};
+        private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day2InputText.txt", Delimiter);
+        private static readonly List<PasswordItem> ConvertedInputList = InputList.ConvertAll(x => new PasswordItem(x)).ToList();
 
         public static void SolvePartOne()
         {
-            var validPasswordsCount = convertedInputList.Count(passwordItem => passwordItem.ValidateFirstAttempt());
+            var validPasswordsCount = ConvertedInputList.Count(passwordItem => passwordItem.ValidateFirstAttempt());
             Console.WriteLine(validPasswordsCount);
         }
 
         public static void SolvePartTwo()
         {
-            var validPasswordsCount = convertedInputList.Count(passwordItem => passwordItem.ValidateOtcas());
+            var validPasswordsCount = ConvertedInputList.Count(passwordItem => passwordItem.ValidateOtcas());
             Console.WriteLine(validPasswordsCount);
         }
 
