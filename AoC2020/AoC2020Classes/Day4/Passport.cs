@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AoC2020Classes.Day4
 {
@@ -66,7 +65,7 @@ namespace AoC2020Classes.Day4
         {
             var passportDictionary = new Dictionary<string, string>();
 
-            var fieldSeparator = new char[] {'\n',' '};
+            var fieldSeparator = new[] {"\r\n"," "};
 
             var passportFieldsList = passportEntry.Split(fieldSeparator, StringSplitOptions.RemoveEmptyEntries).ToList();
 
