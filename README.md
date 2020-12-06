@@ -1,5 +1,7 @@
 # Advent Of Code 2020
 
+Note: All input text uses "\r\n" EOL
+
 https://adventofcode.com/
 
 ### Day 1
@@ -15,4 +17,7 @@ Solved!
 Solved!
 
 ### Day 5
+Solved!
+
+### Day 6
 Solved!
