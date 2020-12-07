@@ -5,10 +5,10 @@ namespace AoC2020Main
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            AoC2020Day6.SolvePartOne();
-            AoC2020Day6.SolvePartTwo();
+            AoC2020Day7.SolvePartOne();
+            AoC2020Day7.SolvePartTwo();
             Console.ReadLine();
         }
     }
