@@ -4,20 +4,6 @@ Note: All input text uses "\r\n" EOL
 
 https://adventofcode.com/
 
-### Day 1
-Solved! 
+### Week 1 (Day 1 - 7)
+All solved
 
-### Day 2
-Solved!
-
-### Day 3
-Solved!
-
-### Day 4
-Solved!
-
-### Day 5
-Solved!
-
-### Day 6
-Solved!
