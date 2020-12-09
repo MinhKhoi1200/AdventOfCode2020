@@ -9,3 +9,8 @@ All solved
 
 ### Day 8
 Solved!
+
+### Day 9
+Solved!
+
+
