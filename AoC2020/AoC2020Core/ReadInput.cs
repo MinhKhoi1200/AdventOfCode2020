@@ -32,6 +32,31 @@ namespace AoC2020Core
             return outputList;
         }
 
+        public static List<long> ConvertInputTextToLongIntList(string path)
+        {
+            List<long> outputList = null;
+
+            try
+            {
+                var sr = new StreamReader(path);
+
+                outputList = new List<long>();
+                string line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    outputList.Add(long.Parse(line));
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"An error occurred whilst loading {Path.GetFullPath(path)}.");
+                Console.WriteLine(e.Message);
+            }
+            return outputList;
+        }
+
         public static List<string> ConvertInputTextToStringList(string path, string[] delimiter)
         {
             List<string> outputList = null;
