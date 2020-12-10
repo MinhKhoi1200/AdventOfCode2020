@@ -6,7 +6,7 @@ using AoC2020Core;
 
 namespace AoC2020
 {
-    public class AoC2020Day2
+    public class AoC2020Day02
     {
         private static readonly string[] Delimiter = {"\r\n"};
         private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day2InputText.txt", Delimiter);

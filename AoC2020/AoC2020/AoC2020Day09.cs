@@ -5,7 +5,7 @@ using AoC2020Core;
 
 namespace AoC2020
 {
-    public class AoC2020Day9
+    public class AoC2020Day09
     {
         private static readonly List<long> InputList = ReadInput.ConvertInputTextToLongIntList(@"..\..\..\Inputs\Day9InputText.txt");
 

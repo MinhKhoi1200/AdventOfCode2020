@@ -5,7 +5,7 @@ using AoC2020Core;
 
 namespace AoC2020
 {
-    public class AoC2020Day7
+    public class AoC2020Day07
     {
 
         private static readonly string[] Delimiter = { Environment.NewLine };
