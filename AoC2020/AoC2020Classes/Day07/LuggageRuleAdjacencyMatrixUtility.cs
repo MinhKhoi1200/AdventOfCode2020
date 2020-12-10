@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AoC2020Classes.Day7
+namespace AoC2020Classes.Day07
 {
     public class LuggageRuleAdjacencyMatrixUtility
     {

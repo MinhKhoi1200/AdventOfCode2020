@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AoC2020Classes.Day9
+namespace AoC2020Classes.Day09
 {
     public class XmasDecrypter
     {

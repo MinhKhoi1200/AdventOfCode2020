@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace AoC2020Classes.Day4
+namespace AoC2020Classes.Day04
 {
     public class PassportValidator
     {

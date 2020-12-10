@@ -1,4 +1,4 @@
-﻿namespace AoC2020Classes.Day2
+﻿namespace AoC2020Classes.Day02
 {
     public class PasswordPolicy
     {

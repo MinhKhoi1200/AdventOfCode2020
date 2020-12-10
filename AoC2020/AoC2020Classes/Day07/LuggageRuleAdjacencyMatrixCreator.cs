@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AoC2020Classes.Day7
+namespace AoC2020Classes.Day07
 {
     public class LuggageRuleAdjacencyMatrixCreator
     {

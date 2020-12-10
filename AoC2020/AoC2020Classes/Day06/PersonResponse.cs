@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AoC2020Classes.Day6
+namespace AoC2020Classes.Day06
 {
     public class PersonResponse
     {

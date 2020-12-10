@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using AoC2020Classes.Day8;
+using AoC2020Classes.Day08;
 using AoC2020Core;
-using Debugger = AoC2020Classes.Day8.Debugger;
+using Debugger = AoC2020Classes.Day08.Debugger;
 
 namespace AoC2020
 {

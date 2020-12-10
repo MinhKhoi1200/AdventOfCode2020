@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AoC2020Classes.Day2;
+using AoC2020Classes.Day02;
 using AoC2020Core;
 
 namespace AoC2020

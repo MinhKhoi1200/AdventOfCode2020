@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace AoC2020Classes.Day3
+﻿namespace AoC2020Classes.Day03
 {
     public class TraversePath
     {

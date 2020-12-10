@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AoC2020Classes.Day4
+namespace AoC2020Classes.Day04
 {
     public class Passport
     {

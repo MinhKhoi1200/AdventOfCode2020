@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using AoC2020Classes.Day9;
+using AoC2020Classes.Day09;
 using AoC2020Core;
 
 namespace AoC2020

@@ -1,4 +1,4 @@
-﻿namespace AoC2020Classes.Day8
+﻿namespace AoC2020Classes.Day08
 {
     public enum OpCode
     {

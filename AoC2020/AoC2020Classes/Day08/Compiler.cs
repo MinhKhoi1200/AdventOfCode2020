@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AoC2020Classes.Day8
+namespace AoC2020Classes.Day08
 {
     public class Compiler
     {

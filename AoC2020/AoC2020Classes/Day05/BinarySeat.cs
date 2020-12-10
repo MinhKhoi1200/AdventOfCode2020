@@ -1,4 +1,4 @@
-﻿namespace AoC2020Classes.Day5
+﻿namespace AoC2020Classes.Day05
 {
     public class BinarySeat
     {
