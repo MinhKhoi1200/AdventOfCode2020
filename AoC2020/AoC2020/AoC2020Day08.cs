@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using AoC2020Classes.Day08;
 using AoC2020Core;
-using Debugger = AoC2020Classes.Day08.Debugger;
 
 namespace AoC2020
 {
@@ -16,7 +15,7 @@ namespace AoC2020
             ConvertedInputList = InputList.ConvertAll(item => new Instruction(item));
 
         private static readonly Compiler LoadedCompiler = new Compiler(ConvertedInputList);
-        private static readonly Debugger LoadedDebugger = new Debugger(ConvertedInputList);
+        private static readonly Troubleshooter LoadedTroubleshooter = new Troubleshooter(ConvertedInputList);
 
         public static void SolvePartOne()
         {
@@ -26,7 +25,7 @@ namespace AoC2020
 
         public static void SolvePartTwo()
         {
-            LoadedDebugger.Troubleshoot();
+            LoadedTroubleshooter.Troubleshoot();
         }
     }
 }

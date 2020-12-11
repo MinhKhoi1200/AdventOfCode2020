@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AoC2020Classes.Day08
 {
-    public class Debugger
+    public class Troubleshooter
     {
-        public Debugger(List<Instruction> instructions)
+        public Troubleshooter(List<Instruction> instructions)
         {
             Instructions = instructions;
         }
