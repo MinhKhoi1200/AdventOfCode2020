@@ -11,15 +11,15 @@ namespace AoC2020
         private static readonly List<int> InputList = ReadInput.ConvertInputTextToIntList(@"..\..\..\Inputs\Day10InputText.txt");
 
         private static readonly List<Adapter>
-            ConvertedInputList = Adapter.GenerateSortedListOfAdaptersJoltage(InputList);
+            ConvertedAndSortedAdapterSeriesList = Adapter.GenerateSortedListOfAdaptersJoltage(InputList);
 
         public static void SolvePartOne()
         {
             var diffList = new List<int>();
-            for (var firstIndex = 0; firstIndex < ConvertedInputList.Count - 1; firstIndex++)
+            for (var firstIndex = 0; firstIndex < ConvertedAndSortedAdapterSeriesList.Count - 1; firstIndex++)
             {
-                var firstAdapter = ConvertedInputList[firstIndex];
-                var secondAdapter = ConvertedInputList[firstIndex + 1];
+                var firstAdapter = ConvertedAndSortedAdapterSeriesList[firstIndex];
+                var secondAdapter = ConvertedAndSortedAdapterSeriesList[firstIndex + 1];
 
                 diffList.Add(firstAdapter.OutputJoltage - secondAdapter.OutputJoltage);
             }
@@ -33,7 +33,16 @@ namespace AoC2020
 
         public static void SolvePartTwo()
         {
+            var adapterAndInputAndOutputCounts = ConvertedAndSortedAdapterSeriesList.Count;
 
+            var testStartAdapter = ConvertedAndSortedAdapterSeriesList[0];
+            var testEndAdapter = ConvertedAndSortedAdapterSeriesList[adapterAndInputAndOutputCounts - 1];
+            var testMiddleAdapters =
+                ConvertedAndSortedAdapterSeriesList.GetRange(1, adapterAndInputAndOutputCounts - 2);
+
+            var testResult = AdapterArrangementsSolver.CountAllArrangements(testStartAdapter, testMiddleAdapters, testEndAdapter);
+
+            Console.WriteLine(testResult);
         }
     }
 }
