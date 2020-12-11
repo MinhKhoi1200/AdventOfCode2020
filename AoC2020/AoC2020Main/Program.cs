@@ -7,8 +7,8 @@ namespace AoC2020Main
     {
         static void Main()
         {
-            AoC2020Day9.SolvePartOne();
-            AoC2020Day9.SolvePartTwo();
+            AoC2020Day10.SolvePartOne();
+            AoC2020Day10.SolvePartTwo();
             Console.ReadLine();
         }
     }

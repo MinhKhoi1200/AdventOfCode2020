@@ -1,4 +1,4 @@
-﻿using AoC2020Classes.Day5;
+﻿using AoC2020Classes.Day05;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AoCTests
