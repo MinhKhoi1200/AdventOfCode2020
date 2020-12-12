@@ -28,6 +28,17 @@ namespace AoC2020
 
         public static void SolvePartTwo()
         {
+            var convertedSeatPlan = SeatLayoutCreator.CreateSeatPlan(InputList);
+
+            var seatSimulation = new SeatSimulation(convertedSeatPlan);
+
+            seatSimulation.RunFullSimulationNewRules();
+
+
+            var occupiedSeatsCount = convertedSeatPlan.Sum(row =>
+                row.Count(eachTile => eachTile.TileStatus == TileStatus.SeatOccupied));
+
+            Console.WriteLine(occupiedSeatsCount);
 
         }
     }
