@@ -92,42 +92,16 @@ namespace AoC2020Classes.Day11
             // Look North
             for (var row = currentRowIndex - 1; row >= 0; row--)
             {
-                switch (seatLayout[row][currentColumnIndex].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex, seatLayout, row, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
             // Look South
             for (var row = currentRowIndex + 1; row < rowsCount; row++)
             {
-                switch (seatLayout[row][currentColumnIndex].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex, seatLayout, row, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
@@ -144,42 +118,16 @@ namespace AoC2020Classes.Day11
             // Look West
             for (var column = currentColumnIndex - 1; column >= 0; column--)
             {
-                switch (seatLayout[currentRowIndex][column].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(column, seatLayout, currentRowIndex, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
             // Look East
             for (var column = currentColumnIndex + 1; column < columnsCount; column++)
             {
-                switch (seatLayout[currentRowIndex][column].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(column, seatLayout, currentRowIndex, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
@@ -204,21 +152,9 @@ namespace AoC2020Classes.Day11
             var northEastStepsLimit = northStepsLimit > eastStepsLimit ? eastStepsLimit : northStepsLimit;
             for (var steps = 1; steps <= northEastStepsLimit; steps++)
             {
-                switch (seatLayout[currentRowIndex - steps][currentColumnIndex + steps].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex + steps, seatLayout,
+                    currentRowIndex - steps, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
@@ -226,21 +162,9 @@ namespace AoC2020Classes.Day11
             var northWestStepsLimit = northStepsLimit > westStepsLimit ? westStepsLimit : northStepsLimit;
             for (var steps = 1; steps <= northWestStepsLimit; steps++)
             {
-                switch (seatLayout[currentRowIndex - steps][currentColumnIndex - steps].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex - steps, seatLayout,
+                    currentRowIndex - steps, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
@@ -248,21 +172,9 @@ namespace AoC2020Classes.Day11
             var southEastStepsLimit = southStepsLimit > eastStepsLimit ? eastStepsLimit : southStepsLimit;
             for (var steps = 1; steps <= southEastStepsLimit; steps++)
             {
-                switch (seatLayout[currentRowIndex + steps][currentColumnIndex + steps].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex + steps, seatLayout,
+                    currentRowIndex + steps, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
@@ -270,25 +182,34 @@ namespace AoC2020Classes.Day11
             var southWestStepsLimit = southStepsLimit > westStepsLimit ? westStepsLimit : southStepsLimit;
             for (var steps = 1; steps <= southWestStepsLimit; steps++)
             {
-                switch (seatLayout[currentRowIndex + steps][currentColumnIndex - steps].TileStatus)
-                {
-                    case TileStatus.Unknown:
-                        break;
-                    case TileStatus.Floor:
-                        continue;
-                    case TileStatus.SeatEmpty:
-                        break;
-                    case TileStatus.SeatOccupied:
-                        visibleOccupiedSeatsCount += 1;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex - steps, seatLayout,
+                    currentRowIndex + steps, ref visibleOccupiedSeatsCount))
+                    continue;
                 break;
             }
 
             return visibleOccupiedSeatsCount;
+        }
+
+        private static bool LookingForwardUntilSeatIsEncountered(int currentColumnIndex, List<List<Tile>> seatLayout, int row,
+            ref int visibleOccupiedSeatsCount)
+        {
+            switch (seatLayout[row][currentColumnIndex].TileStatus)
+            {
+                case TileStatus.Unknown:
+                    break;
+                case TileStatus.Floor:
+                    return true;
+                case TileStatus.SeatEmpty:
+                    break;
+                case TileStatus.SeatOccupied:
+                    visibleOccupiedSeatsCount += 1;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return false;
         }
 
     }
