@@ -18,6 +18,8 @@ namespace AoC2020
             var ship = new Ship();
 
             ship.ExecuteInstructionsList(ShipInstructionsList);
+            
+            Console.WriteLine(ship.ManhattanDistFromOrigin);
         }
 
         public static void SolvePartTwo()
@@ -25,7 +27,8 @@ namespace AoC2020
             var ship = new Ship();
 
             ship.ExecuteInstructionsListWithWayPoint(ShipInstructionsList);
-
+            
+            Console.WriteLine(ship.ManhattanDistFromOrigin);
         }
     }
 }
