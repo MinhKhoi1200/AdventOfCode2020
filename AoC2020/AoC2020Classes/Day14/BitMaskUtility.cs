@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace AoC2020Classes.Day14
 {
@@ -100,6 +101,7 @@ namespace AoC2020Classes.Day14
 
         private static string ReplaceAddressFloatingBits(string address, string bitsToReplace)
         {
+            var newAddressBinaryStringBuilder = new StringBuilder();
             var newAddressBinary = "";
             var bitIndex = 0;
             foreach (var bit in address)
@@ -107,15 +109,17 @@ namespace AoC2020Classes.Day14
                 switch (bit)
                 {
                     case 'X':
-                        newAddressBinary += bitsToReplace[bitIndex];
+                        newAddressBinaryStringBuilder.Append(bitsToReplace[bitIndex]);
                         bitIndex += 1;
                         break;
                     case '0':
                     case '1':
-                        newAddressBinary += bit;
+                        newAddressBinaryStringBuilder.Append(bit);
                         break;
                 }
             }
+
+            newAddressBinary = newAddressBinaryStringBuilder.ToString();
 
             return newAddressBinary;
 
