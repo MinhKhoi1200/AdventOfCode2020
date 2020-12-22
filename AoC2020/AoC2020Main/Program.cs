@@ -9,11 +9,11 @@ namespace AoC2020Main
         static void Main()
         {
             var watch1 = Stopwatch.StartNew();
-            AoC2020Day18.SolvePartOne();
+            AoC2020Day22.SolvePartOne();
             watch1.Stop();
 
             var watch2 = Stopwatch.StartNew();
-            AoC2020Day18.SolvePartTwo();
+            AoC2020Day22.SolvePartTwo();
             watch2.Stop();
 
             Console.WriteLine($"Part One took {watch1.ElapsedMilliseconds} ms");
