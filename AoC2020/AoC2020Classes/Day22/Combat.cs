@@ -15,7 +15,13 @@ namespace AoC2020Classes.Day22
             PlayerOneInitial = new List<int>(playerOneCards);
             PlayerTwoInitial = new List<int>(playerTwoCards);
         }
-        
+
+        private Queue<int> PlayerOneCards { get; set; }
+        private Queue<int> PlayerTwoCards { get; set; }
+        private List<int> PlayerOneInitial { get; }
+        private List<int> PlayerTwoInitial { get; }
+        private List<string> GameStates { get; }
+
         public int Play()
         {
             Init();
@@ -45,12 +51,9 @@ namespace AoC2020Classes.Day22
             Init();
             while (PlayerOneCards.Any() && PlayerTwoCards.Any())
             {
-                if (IsRoundRepeated())
-                {
-                    return Player.PlayerOne;
-                }
+                if (IsRoundRepeated()) return Player.PlayerOne;
                 UpdateGameStates();
-                
+
                 Player roundWinner;
                 var playerOneCard = PlayerOneCards.Dequeue();
                 var playerTwoCard = PlayerTwoCards.Dequeue();
@@ -59,7 +62,7 @@ namespace AoC2020Classes.Day22
                 {
                     var nextSubGamePlayerOneCards = PlayerOneCards.ToList().GetRange(0, playerOneCard);
                     var nextSubGamePlayerTwoCards = PlayerTwoCards.ToList().GetRange(0, playerTwoCard);
-                    
+
                     var subGame = new Combat(nextSubGamePlayerOneCards, nextSubGamePlayerTwoCards);
                     roundWinner = subGame.PlayRecursiveBattle();
                 }
@@ -81,8 +84,6 @@ namespace AoC2020Classes.Day22
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                
             }
 
             var gameWinner = PlayerOneCards.Any() ? Player.PlayerOne : Player.PlayerTwo;
@@ -93,7 +94,7 @@ namespace AoC2020Classes.Day22
         public int CalculateGameWinnerScore()
         {
             if (PlayerOneCards.Any() && PlayerTwoCards.Any()) return default;
-            
+
             var winnerScore = 0;
 
             var winnersCards = PlayerOneCards.Any() ? PlayerOneCards : PlayerTwoCards;
@@ -107,7 +108,6 @@ namespace AoC2020Classes.Day22
             }
 
             return winnerScore;
-
         }
 
         public override string ToString()
@@ -117,12 +117,6 @@ namespace AoC2020Classes.Day22
 
             return $"1:{player1Cards}, 2:{player2Cards}";
         }
-
-        private Queue<int> PlayerOneCards { get; set; }
-        private Queue<int> PlayerTwoCards { get; set; }
-        private List<int> PlayerOneInitial { get; }
-        private List<int> PlayerTwoInitial { get; }
-        private List<string> GameStates { get; set; }
 
         private void Init()
         {

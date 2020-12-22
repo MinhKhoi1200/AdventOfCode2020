@@ -9,7 +9,6 @@
             (RowNumber, ColumnNumber) = ConvertSeatCodeToSeatPosition();
 
             SeatId = ConvertSeatPositionToSeatId();
-
         }
 
         public string SeatCode { get; }
@@ -26,8 +25,8 @@
 
         private (int rowNumber, int columnNumber) ConvertSeatCodeToSeatPosition()
         {
-            var frontBackPartition = SeatCode.Substring(startIndex: 0, length: 7);
-            var leftRightPartition = SeatCode.Substring(startIndex: 7);
+            var frontBackPartition = SeatCode.Substring(0, 7);
+            var leftRightPartition = SeatCode.Substring(7);
 
             var rowNumber = ConvertFrontPackPartitionToRowNumber(frontBackPartition);
             var columnNumber = ConvertLeftRightPartitionToColumnNumber(leftRightPartition);
@@ -35,12 +34,15 @@
             return (rowNumber, columnNumber);
         }
 
-        private int ConvertSeatPositionToSeatId() => RowNumber * 8 + ColumnNumber;
+        private int ConvertSeatPositionToSeatId()
+        {
+            return RowNumber * 8 + ColumnNumber;
+        }
 
         private string ConvertSeatItemToString()
         {
-            var frontBackPartition = SeatCode.Substring(startIndex: 0, length: 7);
-            var leftRightPartition = SeatCode.Substring(startIndex: 7);
+            var frontBackPartition = SeatCode.Substring(0, 7);
+            var leftRightPartition = SeatCode.Substring(7);
 
             var outputString = "";
             foreach (var character in frontBackPartition)
@@ -104,7 +106,5 @@
             var columnNumber = columnLowerBound;
             return columnNumber;
         }
-
-
     }
 }

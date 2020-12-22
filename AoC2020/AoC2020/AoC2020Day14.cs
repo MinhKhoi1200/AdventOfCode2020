@@ -8,7 +8,7 @@ namespace AoC2020
 {
     public class AoC2020Day14
     {
-        private static readonly string[] Delimiter = { Environment.NewLine };
+        private static readonly string[] Delimiter = {Environment.NewLine};
 
         private static readonly List<string> InputList =
             ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day14InputText.txt", Delimiter);

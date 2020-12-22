@@ -40,7 +40,7 @@ namespace AoC2020Classes.Day07
 
             return containingBagsDictionary;
         }
-        
+
 
         // get color from ^[\w\s]+(?=\sbags\scontain)
         // get containing bags from \d[\w\s]+(?=\s), what colours it contain (?<=\d\s)[\w\s]+(?=\s)

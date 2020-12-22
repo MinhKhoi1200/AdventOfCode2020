@@ -23,12 +23,12 @@
             ToBeSwapped = false;
         }
 
+        public TileStatus TileStatus { get; set; }
+        public bool ToBeSwapped { get; set; }
+
         public override string ToString()
         {
             return TileStatus.ToString();
         }
-
-        public TileStatus TileStatus { get; set; }
-        public bool ToBeSwapped { get; set; }
     }
 }

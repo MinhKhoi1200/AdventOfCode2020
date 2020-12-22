@@ -4,9 +4,6 @@ namespace AoC2020Classes.Day02
 {
     public class PasswordItem
     {
-        public PasswordPolicy PwPolicy { get; set; }
-        public string Password { get; set; }
-
         public PasswordItem(PasswordPolicy pwPolicy, string password)
         {
             PwPolicy = pwPolicy;
@@ -19,6 +16,9 @@ namespace AoC2020Classes.Day02
             PwPolicy = convertedPasswordItem?.PwPolicy;
             Password = convertedPasswordItem?.Password;
         }
+
+        public PasswordPolicy PwPolicy { get; set; }
+        public string Password { get; set; }
 
         public bool ValidateFirstAttempt()
         {
@@ -35,8 +35,8 @@ namespace AoC2020Classes.Day02
             var isLowerLetterMatched = lowerLetter == PwPolicy.Letter;
             var isUpperLetterMatched = upperLetter == PwPolicy.Letter;
 
-            var isValid = (isLowerLetterMatched && !isUpperLetterMatched) ||
-                          (isUpperLetterMatched && !isLowerLetterMatched);
+            var isValid = isLowerLetterMatched && !isUpperLetterMatched ||
+                          isUpperLetterMatched && !isLowerLetterMatched;
 
             return isValid;
         }

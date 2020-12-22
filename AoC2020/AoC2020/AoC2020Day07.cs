@@ -7,9 +7,10 @@ namespace AoC2020
 {
     public class AoC2020Day07
     {
+        private static readonly string[] Delimiter = {Environment.NewLine};
 
-        private static readonly string[] Delimiter = { Environment.NewLine };
-        private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day7InputText.txt", Delimiter);
+        private static readonly List<string> InputList =
+            ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day7InputText.txt", Delimiter);
 
         private static readonly List<LuggageRule>
             ConvertedInputList = InputList.ConvertAll(item => new LuggageRule(item));
@@ -20,14 +21,17 @@ namespace AoC2020
         public static void SolvePartOne()
         {
             const string colourToFind = "shiny gold";
-            var allMultiLevelLuggage = LuggageRuleAdjacencyMatrixUtility.FindMultiLevelLuggageContainingColour(colourToFind, AdjacencyMatrix);
+            var allMultiLevelLuggage =
+                LuggageRuleAdjacencyMatrixUtility.FindMultiLevelLuggageContainingColour(colourToFind, AdjacencyMatrix);
             Console.WriteLine(allMultiLevelLuggage.Count);
         }
 
         public static void SolvePartTwo()
         {
             const string colourToFind = "shiny gold";
-            var numberOfLuggage = LuggageRuleAdjacencyMatrixUtility.CountNumberOfBugsInsideALuggageOfGivenColour(colourToFind, AdjacencyMatrix);
+            var numberOfLuggage =
+                LuggageRuleAdjacencyMatrixUtility.CountNumberOfBugsInsideALuggageOfGivenColour(colourToFind,
+                    AdjacencyMatrix);
             Console.WriteLine(numberOfLuggage);
         }
     }

@@ -5,6 +5,7 @@ namespace AoC2020Classes.Day15
     public class MemoryGame
     {
         private int _lastNumber;
+
         public MemoryGame(IReadOnlyList<int> numberSeries)
         {
             _lastNumber = numberSeries[numberSeries.Count - 1];
@@ -21,6 +22,10 @@ namespace AoC2020Classes.Day15
             }
         }
 
+        private int StartingTurn { get; }
+
+        private Dictionary<int, (int earlierTurn, int lastTurn)> RecentNumbersAndTurns { get; }
+
         public int Play(int turnNumbers)
         {
             var nextNumber = _lastNumber;
@@ -28,44 +33,31 @@ namespace AoC2020Classes.Day15
             for (var index = StartingTurn; index < turnNumbers; index++)
             {
                 _lastNumber = nextNumber;
-                
+
                 if (IsNumberRepeatedMoreThanOnce(_lastNumber))
-                {
                     nextNumber = RecentNumbersAndTurns[_lastNumber].lastTurn -
                                  RecentNumbersAndTurns[_lastNumber].earlierTurn;
-                }
                 else
-                {
                     nextNumber = 0;
-                }
 
                 UpdateRecentNumbersAndTurns(nextNumber, index + 1);
-
             }
 
             return nextNumber;
-
         }
-        
-        private int StartingTurn { get; }
 
-        private Dictionary<int, (int earlierTurn, int lastTurn)> RecentNumbersAndTurns { get; set; }
+        private bool IsNumberRepeatedMoreThanOnce(int number)
+        {
+            return RecentNumbersAndTurns[number].earlierTurn > 0;
+        }
 
-        private bool IsNumberRepeatedMoreThanOnce(int number) =>
-            RecentNumbersAndTurns[number].earlierTurn > 0;
-        
         private void UpdateRecentNumbersAndTurns(int nextNumber, int turnNumber)
         {
             if (RecentNumbersAndTurns.ContainsKey(nextNumber))
-            {
                 RecentNumbersAndTurns[nextNumber] = (earlierTurn: RecentNumbersAndTurns[nextNumber].lastTurn,
                     lastTurn: turnNumber);
-            }
             else
-            {
                 RecentNumbersAndTurns.Add(nextNumber, (earlierTurn: 0, lastTurn: turnNumber));
-            }
         }
-
     }
 }

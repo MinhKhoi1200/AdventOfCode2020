@@ -10,6 +10,10 @@
             TimesExecuted = 0;
         }
 
+        public OpCode Operation { get; set; }
+        public int Argument { get; }
+        public int TimesExecuted { get; set; }
+
         public override string ToString()
         {
             return Operation + " " + Argument;
@@ -19,10 +23,6 @@
         {
             TimesExecuted = 0;
         }
-
-        public OpCode Operation { get; set; }
-        public int Argument { get; }
-        public int TimesExecuted { get; set; }
 
         private static OpCode ConvertRawOpCodeToEnumOpCode(string rawOpCode)
         {

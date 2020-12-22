@@ -16,16 +16,10 @@ namespace AoC2020Classes.Day14
             var outputNumberInBinary = "";
 
             for (var index = 0; index < bitMask.Length; index++)
-            {
                 if (bitMask[index].Equals('X'))
-                {
                     outputNumberInBinary += paddedInputBinary[index];
-                }
                 else
-                {
                     outputNumberInBinary += bitMask[index];
-                }
-            }
 
             var outputNumber = Convert.ToInt64(outputNumberInBinary, 2);
 
@@ -43,25 +37,21 @@ namespace AoC2020Classes.Day14
             var numberOfFloatingBits = 0;
 
             for (var index = 0; index < bitMask.Length; index++)
-            {
                 if (bitMask[index].Equals('0'))
                 {
                     outputAddressBinary += paddedInputBinary[index];
                 }
                 else
                 {
-                    if (bitMask[index].Equals('X'))
-                    {
-                        numberOfFloatingBits += 1;
-                    }
+                    if (bitMask[index].Equals('X')) numberOfFloatingBits += 1;
 
                     outputAddressBinary += bitMask[index];
                 }
-            }
 
             var binaryPermutations = GenerateBinaryPermutations(numberOfFloatingBits);
 
-            var outputBinaryLists = binaryPermutations.Select(binaryPermutation => ReplaceAddressFloatingBits(outputAddressBinary, binaryPermutation)).ToList();
+            var outputBinaryLists = binaryPermutations.Select(binaryPermutation =>
+                ReplaceAddressFloatingBits(outputAddressBinary, binaryPermutation)).ToList();
 
             var outputInt64Lists = outputBinaryLists.Select(i => Convert.ToInt64(i, 2)).ToList();
 
@@ -70,10 +60,7 @@ namespace AoC2020Classes.Day14
 
         private static string PadBinaryExpression(string inputBinExpression, int numberOfBits)
         {
-            if (inputBinExpression.Length > numberOfBits)
-            {
-                return null;
-            }
+            if (inputBinExpression.Length > numberOfBits) return null;
 
             var numberOfPaddingZeros = numberOfBits - inputBinExpression.Length;
 
@@ -84,10 +71,7 @@ namespace AoC2020Classes.Day14
 
         private static List<string> GenerateBinaryPermutations(int numberOfDigits)
         {
-            if (numberOfDigits == 1)
-            {
-                return new List<string> {"0", "1"};
-            }
+            if (numberOfDigits == 1) return new List<string> {"0", "1"};
 
             var lowerDigitsPermutations = GenerateBinaryPermutations(numberOfDigits - 1);
 
@@ -105,7 +89,6 @@ namespace AoC2020Classes.Day14
             var newAddressBinary = "";
             var bitIndex = 0;
             foreach (var bit in address)
-            {
                 switch (bit)
                 {
                     case 'X':
@@ -117,12 +100,10 @@ namespace AoC2020Classes.Day14
                         newAddressBinaryStringBuilder.Append(bit);
                         break;
                 }
-            }
 
             newAddressBinary = newAddressBinaryStringBuilder.ToString();
 
             return newAddressBinary;
-
         }
     }
 }

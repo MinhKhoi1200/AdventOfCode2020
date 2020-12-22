@@ -17,7 +17,6 @@ namespace AoC2020Classes.Day11
             var tileList = charTileList.ConvertAll(eachChar => new Tile(eachChar));
 
             return tileList;
-
         }
     }
 }

@@ -14,16 +14,14 @@ namespace AoC2020Classes.Day18
 
             return result;
         }
+
         private static IEnumerable<string> Tokenise(string rawExpression)
         {
             var firstRoundConversion = rawExpression.Split(' ').ToList();
 
             var secondRoundConversion = new List<string>();
 
-            foreach (var item in firstRoundConversion)
-            {
-                secondRoundConversion.AddRange(SeparateBrackets(item));
-            }
+            foreach (var item in firstRoundConversion) secondRoundConversion.AddRange(SeparateBrackets(item));
 
             return secondRoundConversion;
         }
@@ -31,9 +29,7 @@ namespace AoC2020Classes.Day18
         private static IEnumerable<string> SeparateBrackets(string numberWithBrackets)
         {
             if (!(numberWithBrackets.Contains('(') || numberWithBrackets.Contains(')')))
-            {
                 return new List<string> {numberWithBrackets};
-            }
             var outputList = new List<string>();
 
             var digitsRegex = new Regex(@"\d+");
@@ -42,10 +38,11 @@ namespace AoC2020Classes.Day18
 
             var openBrackets = openBracketRegex.Match(numberWithBrackets).Value.ToCharArray().Select(c => c.ToString())
                 .ToList();
-            
-            var closeBrackets = closeBracketRegex.Match(numberWithBrackets).Value.ToCharArray().Select(c => c.ToString())
+
+            var closeBrackets = closeBracketRegex.Match(numberWithBrackets).Value.ToCharArray()
+                .Select(c => c.ToString())
                 .ToList();
-            
+
             var digits = digitsRegex.Match(numberWithBrackets).Value.ToCharArray().Select(c => c.ToString())
                 .ToList();
 
@@ -54,8 +51,6 @@ namespace AoC2020Classes.Day18
             outputList.AddRange(closeBrackets);
 
             return outputList;
-
-
         }
     }
 }

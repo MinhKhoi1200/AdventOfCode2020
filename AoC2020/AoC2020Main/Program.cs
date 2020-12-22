@@ -4,9 +4,9 @@ using AoC2020;
 
 namespace AoC2020Main
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             var watch1 = Stopwatch.StartNew();
             AoC2020Day22.SolvePartOne();

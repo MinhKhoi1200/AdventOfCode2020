@@ -5,14 +5,14 @@ namespace AoC2020Classes.Day18
 {
     public static class RpnUtility
     {
-        internal static IEnumerable<string> ConvertToRpn(IEnumerable<string> rawExpression, Dictionary<string, int> operatorPrecedence)
+        internal static IEnumerable<string> ConvertToRpn(IEnumerable<string> rawExpression,
+            Dictionary<string, int> operatorPrecedence)
         {
             var outputStack = new Stack<string>();
 
             var operationStack = new Stack<string>();
 
             foreach (var currentInputElement in rawExpression)
-            {
                 if (int.TryParse(currentInputElement, out _))
                 {
                     outputStack.Push(currentInputElement);
@@ -22,12 +22,8 @@ namespace AoC2020Classes.Day18
                     if (operationStack.Any())
                     {
                         if (operationStack.Peek() != "(")
-                        {
                             if (operatorPrecedence[currentInputElement] <= operatorPrecedence[operationStack.Peek()])
-                            {
                                 outputStack.Push(operationStack.Pop());
-                            }
-                        }
 
                         operationStack.Push(currentInputElement);
                     }
@@ -37,6 +33,7 @@ namespace AoC2020Classes.Day18
                     }
                 }
                 else
+                {
                     switch (currentInputElement)
                     {
                         case "(":
@@ -55,22 +52,17 @@ namespace AoC2020Classes.Day18
                             break;
                         }
                     }
-            }
+                }
 
-            while (operationStack.Any())
-            {
-                outputStack.Push(operationStack.Pop());
-            }
+            while (operationStack.Any()) outputStack.Push(operationStack.Pop());
 
             return outputStack.ToList();
-
         }
 
         internal static long EvaluateRpn(IEnumerable<string> inputRpn)
         {
             var resultStack = new Stack<long>();
             foreach (var currentItem in inputRpn.Reverse())
-            {
                 if (int.TryParse(currentItem, out var result))
                 {
                     resultStack.Push(result);
@@ -90,11 +82,10 @@ namespace AoC2020Classes.Day18
                             break;
                     }
                 }
-            }
 
             return resultStack.Pop();
         }
-        
+
         private static bool IsOperator(Dictionary<string, int> operatorPrecedence, string currentInputElement)
         {
             return operatorPrecedence.ContainsKey(currentInputElement);

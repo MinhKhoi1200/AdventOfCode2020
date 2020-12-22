@@ -14,23 +14,17 @@ namespace AoC2020Classes.Day12
             UnitsToMove = int.Parse(rawInstruction.Substring(1));
         }
 
+        public ShipCommand ShipCommand { get; }
+        public int UnitsToMove { get; }
+
         public override string ToString()
         {
             var units = "units";
-            if (ShipCommand == ShipCommand.TurnLeft || ShipCommand == ShipCommand.TurnRight)
-            {
-                units = "degrees";
-            }
+            if (ShipCommand == ShipCommand.TurnLeft || ShipCommand == ShipCommand.TurnRight) units = "degrees";
 
-            if (UnitsToMove < 2)
-            {
-                units = units.Substring(0, units.Length - 1);
-            }
+            if (UnitsToMove < 2) units = units.Substring(0, units.Length - 1);
 
             return $"{ShipCommand} by {UnitsToMove} {units}";
         }
-
-        public ShipCommand ShipCommand { get; }
-        public int UnitsToMove { get; }
     }
 }

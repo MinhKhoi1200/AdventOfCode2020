@@ -61,13 +61,22 @@ namespace AoC2020Classes.Day04
         public string PassportId { get; set; }
         public string CountryId { get; set; }
 
+        private bool IsBirthYearInRange => PassportValidator.ValidateBirthYear(BirthYear);
+        private bool IsIssueYearInRange => PassportValidator.ValidateIssueYear(IssueYear);
+        private bool IsExpiryYearInRange => PassportValidator.ValidateExpiryYear(ExpiryYear);
+        private bool IsHeightInRangeAndValid => PassportValidator.ValidateHeight(Height);
+        private bool IsHairColorValid => PassportValidator.ValidateHairColor(HairColor);
+        private bool IsEyeColorValid => PassportValidator.ValidateEyeColor(EyeColor);
+        private bool IsPassportIdValid => PassportValidator.ValidatePassportId(PassportId);
+
         private Dictionary<string, string> ConvertPassportEntryToDictionary(string passportEntry)
         {
             var passportDictionary = new Dictionary<string, string>();
 
-            var fieldSeparator = new[] {"\r\n"," "};
+            var fieldSeparator = new[] {"\r\n", " "};
 
-            var passportFieldsList = passportEntry.Split(fieldSeparator, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var passportFieldsList =
+                passportEntry.Split(fieldSeparator, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             foreach (var passportField in passportFieldsList)
             {
@@ -76,22 +85,11 @@ namespace AoC2020Classes.Day04
                 var key = keyValuePairArray[0];
                 var value = keyValuePairArray[1];
 
-                if (!passportDictionary.ContainsKey(key))
-                {
-                    passportDictionary.Add(key, value);
-                }
+                if (!passportDictionary.ContainsKey(key)) passportDictionary.Add(key, value);
             }
 
             return passportDictionary;
         }
-
-        private bool IsBirthYearInRange => PassportValidator.ValidateBirthYear(BirthYear);
-        private bool IsIssueYearInRange => PassportValidator.ValidateIssueYear(IssueYear);
-        private bool IsExpiryYearInRange => PassportValidator.ValidateExpiryYear(ExpiryYear);
-        private bool IsHeightInRangeAndValid => PassportValidator.ValidateHeight(Height);
-        private bool IsHairColorValid => PassportValidator.ValidateHairColor(HairColor);
-        private bool IsEyeColorValid => PassportValidator.ValidateEyeColor(EyeColor);
-        private bool IsPassportIdValid => PassportValidator.ValidatePassportId(PassportId);
 
         private int? ConvertNumeralStringToInt(string inputDigits)
         {

@@ -10,7 +10,7 @@ namespace AoC2020Classes.Day03
 
         public MapGrid(List<List<char>> grid)
         {
-            CurrentPosition = new Node(0,0);
+            CurrentPosition = new Node(0, 0);
             Grid = grid;
         }
 
@@ -38,11 +38,7 @@ namespace AoC2020Classes.Day03
 
                 Traverse(traversePath);
 
-                if (IsXPositionOutOfBound())
-                {
-                    WarpXPosition();
-                }
-
+                if (IsXPositionOutOfBound()) WarpXPosition();
             }
 
             return traversedTiles;
@@ -59,11 +55,24 @@ namespace AoC2020Classes.Day03
             CurrentPosition = new Node(0, 0);
         }
 
-        private char ReadCurrentPosition() => Grid[CurrentPosition.YPosition][CurrentPosition.XPosition];
+        private char ReadCurrentPosition()
+        {
+            return Grid[CurrentPosition.YPosition][CurrentPosition.XPosition];
+        }
 
-        private bool IsXPositionOutOfBound() => CurrentPosition.XPosition >= Width;
-        private bool IsYPositionOutOfBound() => CurrentPosition.YPosition >= Height;
+        private bool IsXPositionOutOfBound()
+        {
+            return CurrentPosition.XPosition >= Width;
+        }
 
-        private void WarpXPosition() => CurrentPosition.XPosition = CurrentPosition.XPosition % Width;
+        private bool IsYPositionOutOfBound()
+        {
+            return CurrentPosition.YPosition >= Height;
+        }
+
+        private void WarpXPosition()
+        {
+            CurrentPosition.XPosition = CurrentPosition.XPosition % Width;
+        }
     }
 }

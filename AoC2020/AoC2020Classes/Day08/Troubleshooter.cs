@@ -5,6 +5,8 @@ namespace AoC2020Classes.Day08
 {
     public class Troubleshooter
     {
+        public List<Instruction> Instructions;
+
         public Troubleshooter(List<Instruction> instructions)
         {
             Instructions = instructions;
@@ -15,7 +17,7 @@ namespace AoC2020Classes.Day08
             var compiler = new Compiler(Instructions);
             compiler.Execute();
 
-            int lineNumber = 0;
+            var lineNumber = 0;
 
             foreach (var currentInstruction in Instructions)
             {
@@ -32,8 +34,9 @@ namespace AoC2020Classes.Day08
 
                 if (exitCode != 0) continue;
 
-                Console.WriteLine($"Line {lineNumber} - {currentInstruction} was swapped. Program exited code 0. Accumulator value {useOnceCompiler.Accumulator}");
-                    
+                Console.WriteLine(
+                    $"Line {lineNumber} - {currentInstruction} was swapped. Program exited code 0. Accumulator value {useOnceCompiler.Accumulator}");
+
                 break;
             }
         }
@@ -45,17 +48,14 @@ namespace AoC2020Classes.Day08
                 instruction.Operation = OpCode.Nop;
                 return true;
             }
-            else if(instruction.Operation == OpCode.Nop)
+
+            if (instruction.Operation == OpCode.Nop)
             {
                 instruction.Operation = OpCode.Jmp;
                 return true;
             }
 
             return false;
-
         }
-
-        public List<Instruction> Instructions;
-
     }
 }

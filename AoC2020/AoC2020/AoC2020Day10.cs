@@ -8,7 +8,8 @@ namespace AoC2020
 {
     public class AoC2020Day10
     {
-        private static readonly List<int> InputList = ReadInput.ConvertInputTextToIntList(@"..\..\..\Inputs\Day10InputText.txt");
+        private static readonly List<int> InputList =
+            ReadInput.ConvertInputTextToIntList(@"..\..\..\Inputs\Day10InputText.txt");
 
         private static readonly List<Adapter>
             ConvertedAndSortedAdapterSeriesList = Adapter.GenerateSortedListOfAdaptersJoltage(InputList);
@@ -28,7 +29,6 @@ namespace AoC2020
             var oneJoltsDiffCount = diffList.Count(joltDiff => joltDiff == -1);
 
             Console.WriteLine(threeJoltsDiffCount * oneJoltsDiffCount);
-
         }
 
         public static void SolvePartTwo()
@@ -40,7 +40,8 @@ namespace AoC2020
             var testMiddleAdapters =
                 ConvertedAndSortedAdapterSeriesList.GetRange(1, adapterAndInputAndOutputCounts - 2);
 
-            var testResult = AdapterArrangementsSolver.CountAllArrangements(testStartAdapter, testMiddleAdapters, testEndAdapter);
+            var testResult =
+                AdapterArrangementsSolver.CountAllArrangements(testStartAdapter, testMiddleAdapters, testEndAdapter);
 
             Console.WriteLine(testResult);
         }

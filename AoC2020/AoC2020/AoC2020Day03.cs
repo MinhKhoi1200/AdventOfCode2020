@@ -9,7 +9,10 @@ namespace AoC2020
     public class AoC2020Day03
     {
         private static readonly string[] Delimiter = {"\r\n"};
-        private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day3InputText.txt", Delimiter);
+
+        private static readonly List<string> InputList =
+            ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day3InputText.txt", Delimiter);
+
         private static readonly List<List<char>> ConvertedInputList = InputList.ConvertAll(eachRow => eachRow.ToList());
         private static readonly MapGrid MapGrid = new MapGrid(ConvertedInputList);
 
@@ -35,17 +38,13 @@ namespace AoC2020
             }
 
             Console.WriteLine(treeCountsProduct);
-
         }
 
         private static List<TraversePath> InitialiseTraversePathsList()
         {
             var traversePaths = new List<TraversePath>();
 
-            for (var i = 1; i <= 7; i += 2)
-            {
-                traversePaths.Add(new TraversePath(i, 1));
-            }
+            for (var i = 1; i <= 7; i += 2) traversePaths.Add(new TraversePath(i, 1));
 
             traversePaths.Add(new TraversePath(1, 2));
             return traversePaths;

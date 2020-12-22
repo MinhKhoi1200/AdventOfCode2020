@@ -12,17 +12,14 @@ namespace AoC2020Classes.Day13
             var rawBusNumberList = busNumbers.Split(',').ToList();
 
             foreach (var rawBusNumber in rawBusNumberList)
-            {
                 if (int.TryParse(rawBusNumber, out var convertedBusNumber))
-                {
                     busNumbersList.Add(convertedBusNumber);
-                }
-            }
 
             return busNumbersList;
         }
 
-        public static (int busNumber, int waitTime) FindTheEarliestNextBus(List<int> busNumbersList, int currentTimeStamp)
+        public static (int busNumber, int waitTime) FindTheEarliestNextBus(List<int> busNumbersList,
+            int currentTimeStamp)
         {
             var currentMinNextBus = busNumbersList[0];
             var currentMinWaitTime = CalculateWaitingTime(currentMinNextBus, currentTimeStamp);
@@ -63,7 +60,7 @@ namespace AoC2020Classes.Day13
 
         private static int CalculateWaitingTime(int busNumber, int currentTimeStamp)
         {
-            return busNumber - (currentTimeStamp % busNumber);
+            return busNumber - currentTimeStamp % busNumber;
         }
     }
 }

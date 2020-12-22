@@ -10,6 +10,10 @@ namespace AoC2020Classes.Day11
             IsSimulationStable = false;
         }
 
+
+        public List<List<Tile>> SeatLayout { get; }
+        public bool IsSimulationStable { get; set; }
+
         public void RunFullSimulation()
         {
             while (IsSimulationStable == false)
@@ -36,19 +40,17 @@ namespace AoC2020Classes.Day11
             var columnsCount = SeatLayout[0].Count;
 
             for (var rowIndex = 0; rowIndex < rowsCount; rowIndex++)
+            for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++)
             {
-                for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++)
-                {
-                    var currentTile = SeatLayout[rowIndex][columnIndex];
-                    var neighbourOccupiedSeats =
-                        SeatSimulationUtility.CountAdjacentOccupiedSeat(rowIndex, columnIndex, SeatLayout);
+                var currentTile = SeatLayout[rowIndex][columnIndex];
+                var neighbourOccupiedSeats =
+                    SeatSimulationUtility.CountAdjacentOccupiedSeat(rowIndex, columnIndex, SeatLayout);
 
-                    if (currentTile.TileStatus == TileStatus.SeatEmpty && neighbourOccupiedSeats == 0 ||
-                        currentTile.TileStatus == TileStatus.SeatOccupied && neighbourOccupiedSeats >= 4)
-                    {
-                        SeatLayout[rowIndex][columnIndex].ToBeSwapped = true;
-                        IsSimulationStable = false;
-                    }
+                if (currentTile.TileStatus == TileStatus.SeatEmpty && neighbourOccupiedSeats == 0 ||
+                    currentTile.TileStatus == TileStatus.SeatOccupied && neighbourOccupiedSeats >= 4)
+                {
+                    SeatLayout[rowIndex][columnIndex].ToBeSwapped = true;
+                    IsSimulationStable = false;
                 }
             }
         }
@@ -61,27 +63,24 @@ namespace AoC2020Classes.Day11
             var columnsCount = SeatLayout[0].Count;
 
             for (var rowIndex = 0; rowIndex < rowsCount; rowIndex++)
+            for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++)
             {
-                for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++)
-                {
-                    var currentTile = SeatLayout[rowIndex][columnIndex];
-                    var visibleOccupiedSeatsCount = SeatSimulationUtility.CountAllVisibleOccupiedSeats(rowIndex, columnIndex, SeatLayout);
+                var currentTile = SeatLayout[rowIndex][columnIndex];
+                var visibleOccupiedSeatsCount =
+                    SeatSimulationUtility.CountAllVisibleOccupiedSeats(rowIndex, columnIndex, SeatLayout);
 
-                    if (currentTile.TileStatus == TileStatus.SeatEmpty && visibleOccupiedSeatsCount == 0 ||
-                        currentTile.TileStatus == TileStatus.SeatOccupied && visibleOccupiedSeatsCount >= 5)
-                    {
-                        SeatLayout[rowIndex][columnIndex].ToBeSwapped = true;
-                        IsSimulationStable = false;
-                    }
+                if (currentTile.TileStatus == TileStatus.SeatEmpty && visibleOccupiedSeatsCount == 0 ||
+                    currentTile.TileStatus == TileStatus.SeatOccupied && visibleOccupiedSeatsCount >= 5)
+                {
+                    SeatLayout[rowIndex][columnIndex].ToBeSwapped = true;
+                    IsSimulationStable = false;
                 }
             }
         }
 
-        public void Update() => SeatSimulationUtility.UpdateSeatLayout(SeatLayout);
-
-
-        public List<List<Tile>> SeatLayout { get; }
-        public bool IsSimulationStable { get; set; }
-
+        public void Update()
+        {
+            SeatSimulationUtility.UpdateSeatLayout(SeatLayout);
+        }
     }
 }

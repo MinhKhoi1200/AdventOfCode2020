@@ -15,7 +15,6 @@ namespace AoC2020Classes.Day14
             var bitMaskRegex = new Regex(@"^mask");
 
             foreach (var command in rawProgram.GetRange(1, rawProgram.Count - 1))
-            {
                 if (memoryInstructionRegex.IsMatch(command))
                 {
                     rawProgramUnit.Add(command);
@@ -25,7 +24,6 @@ namespace AoC2020Classes.Day14
                     programUnitList.Add(new InitProgramUnit(rawProgramUnit));
                     rawProgramUnit = new List<string> {command};
                 }
-            }
 
             programUnitList.Add(new InitProgramUnit(rawProgramUnit));
 
@@ -33,6 +31,9 @@ namespace AoC2020Classes.Day14
 
             MemoryHashTable = new Dictionary<long, long>();
         }
+
+        public List<InitProgramUnit> InitProgramUnits { get; }
+        public Dictionary<long, long> MemoryHashTable { get; }
 
         public void ExecuteV1()
         {
@@ -49,13 +50,9 @@ namespace AoC2020Classes.Day14
                     var contentToBeAdded = BitMaskUtility.ApplyBitMaskToMemoryContent(currentBitMask, currentContent);
 
                     if (!MemoryHashTable.ContainsKey(currentAddress))
-                    {
                         MemoryHashTable.Add(currentAddress, contentToBeAdded);
-                    }
                     else
-                    {
                         MemoryHashTable[currentAddress] = contentToBeAdded;
-                    }
                 }
             }
         }
@@ -75,21 +72,13 @@ namespace AoC2020Classes.Day14
                     var addressesToBeAdded = BitMaskUtility.ApplyBitMaskToMemoryAddress(currentBitMask, currentAddress);
 
                     foreach (var address in addressesToBeAdded)
-                    {
                         if (!MemoryHashTable.ContainsKey(address))
-                        {
                             MemoryHashTable.Add(address, currentContent);
-                        }
                         else
-                        {
                             MemoryHashTable[address] = currentContent;
-                        }
-                    }
                 }
             }
         }
-        public List<InitProgramUnit> InitProgramUnits { get; }
-        public Dictionary<long, long> MemoryHashTable { get; }
 
         private void FlushMemory()
         {

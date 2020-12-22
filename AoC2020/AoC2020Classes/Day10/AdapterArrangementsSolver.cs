@@ -14,9 +14,7 @@ namespace AoC2020Classes.Day10
             var currentRecursionState = GetRecursionStateString(startAdapter, middleAdapters, endAdapter);
 
             if (RecursionStateCache.ContainsKey(currentRecursionState))
-            {
                 return RecursionStateCache[currentRecursionState];
-            }
 
             if (!middleAdapters.Any())
             {
@@ -39,21 +37,14 @@ namespace AoC2020Classes.Day10
             }
 
             return output;
-
         }
 
         private static bool IsAdapterArrangementLegal(Adapter startAdapter, List<Adapter> middleAdapters,
             Adapter endAdapter)
         {
-            if (middleAdapters[0].OutputJoltage - startAdapter.OutputJoltage > 3)
-            {
-                return false;
-            }
+            if (middleAdapters[0].OutputJoltage - startAdapter.OutputJoltage > 3) return false;
 
-            if (endAdapter.OutputJoltage - middleAdapters[middleAdapters.Count - 1].OutputJoltage  > 3)
-            {
-                return false;
-            }
+            if (endAdapter.OutputJoltage - middleAdapters[middleAdapters.Count - 1].OutputJoltage > 3) return false;
 
             for (var firstIndex = 0; firstIndex < middleAdapters.Count - 1; firstIndex++)
             {

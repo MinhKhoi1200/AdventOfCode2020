@@ -12,37 +12,33 @@ namespace AoC2020Classes.Day11
             var columnsCount = seatLayout[0].Count;
 
             for (var rowIndex = 0; rowIndex < rowsCount; rowIndex++)
+            for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++)
             {
-                for (var columnIndex = 0; columnIndex < columnsCount; columnIndex++)
-                {
-                    var currentTile = seatLayout[rowIndex][columnIndex];
+                var currentTile = seatLayout[rowIndex][columnIndex];
 
-                    if (currentTile.ToBeSwapped)
+                if (currentTile.ToBeSwapped)
+                    switch (currentTile.TileStatus)
                     {
-                        switch (currentTile.TileStatus)
-                        {
-                            case TileStatus.Unknown:
-                                break;
-                            case TileStatus.Floor:
-                                break;
-                            case TileStatus.SeatEmpty:
-                                seatLayout[rowIndex][columnIndex].TileStatus = TileStatus.SeatOccupied;
-                                seatLayout[rowIndex][columnIndex].ToBeSwapped = false;
-                                break;
-                            case TileStatus.SeatOccupied:
-                                seatLayout[rowIndex][columnIndex].TileStatus = TileStatus.SeatEmpty;
-                                seatLayout[rowIndex][columnIndex].ToBeSwapped = false;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
+                        case TileStatus.Unknown:
+                            break;
+                        case TileStatus.Floor:
+                            break;
+                        case TileStatus.SeatEmpty:
+                            seatLayout[rowIndex][columnIndex].TileStatus = TileStatus.SeatOccupied;
+                            seatLayout[rowIndex][columnIndex].ToBeSwapped = false;
+                            break;
+                        case TileStatus.SeatOccupied:
+                            seatLayout[rowIndex][columnIndex].TileStatus = TileStatus.SeatEmpty;
+                            seatLayout[rowIndex][columnIndex].ToBeSwapped = false;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
-
-                }
             }
         }
 
-        public static int CountAllVisibleOccupiedSeats(int currentRowIndex, int currentColumnIndex, List<List<Tile>> seatLayout)
+        public static int CountAllVisibleOccupiedSeats(int currentRowIndex, int currentColumnIndex,
+            List<List<Tile>> seatLayout)
         {
             return VisibleOccupiedSeatCountInDiagonalDir(currentRowIndex, currentColumnIndex, seatLayout) +
                    VisibleOccupiedSeatCountInHorizontalDir(currentRowIndex, currentColumnIndex, seatLayout) +
@@ -66,18 +62,12 @@ namespace AoC2020Classes.Day11
             var rowsCount = seatLayout.Count;
             var columnsCount = seatLayout[0].Count;
 
-            for (var dRow = (currentRowNumber > 0 ? -1 : 0); dRow <= (currentRowNumber < rowsCount - 1 ? 1 : 0); dRow++)
-            {
-                for (var dColumn = (currentColumnNumber > 0 ? -1 : 0);
-                    dColumn <= (currentColumnNumber < columnsCount - 1 ? 1 : 0);
-                    dColumn++)
-                {
-                    if (dRow != 0 || dColumn != 0)
-                    {
-                        adjacentTiles.Add(seatLayout[currentRowNumber + dRow][currentColumnNumber + dColumn]);
-                    }
-                }
-            }
+            for (var dRow = currentRowNumber > 0 ? -1 : 0; dRow <= (currentRowNumber < rowsCount - 1 ? 1 : 0); dRow++)
+            for (var dColumn = currentColumnNumber > 0 ? -1 : 0;
+                dColumn <= (currentColumnNumber < columnsCount - 1 ? 1 : 0);
+                dColumn++)
+                if (dRow != 0 || dColumn != 0)
+                    adjacentTiles.Add(seatLayout[currentRowNumber + dRow][currentColumnNumber + dColumn]);
 
             return adjacentTiles;
         }
@@ -92,7 +82,8 @@ namespace AoC2020Classes.Day11
             // Look North
             for (var row = currentRowIndex - 1; row >= 0; row--)
             {
-                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex, seatLayout, row, ref visibleOccupiedSeatsCount))
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex, seatLayout, row,
+                    ref visibleOccupiedSeatsCount))
                     continue;
                 break;
             }
@@ -100,7 +91,8 @@ namespace AoC2020Classes.Day11
             // Look South
             for (var row = currentRowIndex + 1; row < rowsCount; row++)
             {
-                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex, seatLayout, row, ref visibleOccupiedSeatsCount))
+                if (LookingForwardUntilSeatIsEncountered(currentColumnIndex, seatLayout, row,
+                    ref visibleOccupiedSeatsCount))
                     continue;
                 break;
             }
@@ -118,7 +110,8 @@ namespace AoC2020Classes.Day11
             // Look West
             for (var column = currentColumnIndex - 1; column >= 0; column--)
             {
-                if (LookingForwardUntilSeatIsEncountered(column, seatLayout, currentRowIndex, ref visibleOccupiedSeatsCount))
+                if (LookingForwardUntilSeatIsEncountered(column, seatLayout, currentRowIndex,
+                    ref visibleOccupiedSeatsCount))
                     continue;
                 break;
             }
@@ -126,7 +119,8 @@ namespace AoC2020Classes.Day11
             // Look East
             for (var column = currentColumnIndex + 1; column < columnsCount; column++)
             {
-                if (LookingForwardUntilSeatIsEncountered(column, seatLayout, currentRowIndex, ref visibleOccupiedSeatsCount))
+                if (LookingForwardUntilSeatIsEncountered(column, seatLayout, currentRowIndex,
+                    ref visibleOccupiedSeatsCount))
                     continue;
                 break;
             }
@@ -191,7 +185,8 @@ namespace AoC2020Classes.Day11
             return visibleOccupiedSeatsCount;
         }
 
-        private static bool LookingForwardUntilSeatIsEncountered(int currentColumnIndex, List<List<Tile>> seatLayout, int row,
+        private static bool LookingForwardUntilSeatIsEncountered(int currentColumnIndex, List<List<Tile>> seatLayout,
+            int row,
             ref int visibleOccupiedSeatsCount)
         {
             switch (seatLayout[row][currentColumnIndex].TileStatus)
@@ -211,6 +206,5 @@ namespace AoC2020Classes.Day11
 
             return false;
         }
-
     }
 }
