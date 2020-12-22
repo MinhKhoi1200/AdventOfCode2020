@@ -7,7 +7,8 @@ namespace AoC2020
 {
     public class AoC2020Day09
     {
-        private static readonly List<long> InputList = ReadInput.ConvertInputTextToLongIntList(@"..\..\..\Inputs\Day9InputText.txt");
+        private static readonly List<long> InputList =
+            ReadInput.ConvertInputTextToLongIntList(@"..\..\..\Inputs\Day9InputText.txt");
 
         public static void SolvePartOne()
         {

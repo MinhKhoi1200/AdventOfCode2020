@@ -6,7 +6,7 @@ namespace AoC2020
 {
     public class AoC2020Day15
     {
-        private static readonly List<int> InputList = new List<int>() {13, 16, 0, 12, 15, 1};
+        private static readonly List<int> InputList = new List<int> {13, 16, 0, 12, 15, 1};
 
         public static void SolvePartOne()
         {

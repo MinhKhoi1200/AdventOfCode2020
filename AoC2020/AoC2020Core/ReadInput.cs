@@ -14,21 +14,18 @@ namespace AoC2020Core
             try
             {
                 var sr = new StreamReader(path);
-                
+
                 outputList = new List<int>();
                 string line;
 
-                while ((line = sr.ReadLine()) != null)
-                {
-                    outputList.Add(int.Parse(line));
-                }
-                
+                while ((line = sr.ReadLine()) != null) outputList.Add(int.Parse(line));
             }
             catch (Exception e)
             {
                 Console.WriteLine($"An error occurred whilst loading {Path.GetFullPath(path)}.");
                 Console.WriteLine(e.Message);
             }
+
             return outputList;
         }
 
@@ -43,17 +40,14 @@ namespace AoC2020Core
                 outputList = new List<long>();
                 string line;
 
-                while ((line = sr.ReadLine()) != null)
-                {
-                    outputList.Add(long.Parse(line));
-                }
-
+                while ((line = sr.ReadLine()) != null) outputList.Add(long.Parse(line));
             }
             catch (Exception e)
             {
                 Console.WriteLine($"An error occurred whilst loading {Path.GetFullPath(path)}.");
                 Console.WriteLine(e.Message);
             }
+
             return outputList;
         }
 
@@ -71,13 +65,13 @@ namespace AoC2020Core
 
                     outputList = textOutput.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList();
                 }
-
             }
             catch (Exception e)
             {
                 Console.WriteLine($"An error occurred whilst loading {Path.GetFullPath(path)}.");
                 Console.WriteLine(e.Message);
             }
+
             return outputList;
         }
     }

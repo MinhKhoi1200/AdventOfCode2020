@@ -19,7 +19,6 @@ namespace AoC2020Classes.Day09
 
                 mismatchData = numberAfterPreamble;
                 break;
-
             }
 
             return mismatchData;
@@ -34,7 +33,6 @@ namespace AoC2020Classes.Day09
             if (!testContiguous.Any()) return default;
             var weakness = testContiguous.Min() + testContiguous.Max();
             return weakness;
-
         }
 
         private static List<long> FindContiguousSet(List<long> data, long mismatchData)
@@ -54,16 +52,12 @@ namespace AoC2020Classes.Day09
                     contiguousSetSum = contiguousSet.Sum();
                 }
 
-                if (contiguousSetSum == mismatchData)
-                {
-                    return contiguousSet;
-                }
+                if (contiguousSetSum == mismatchData) return contiguousSet;
 
                 contiguousSetStartIndex += 1;
             }
 
             return null;
-
         }
 
         private static bool IsNumberAfterAPreambleValid(IReadOnlyList<long> preamble, long numberAfterPreamble)
@@ -77,10 +71,7 @@ namespace AoC2020Classes.Day09
                 {
                     var secondPreambleNumber = preamble[secondIndex];
 
-                    if (firstPreambleNumber + secondPreambleNumber == numberAfterPreamble)
-                    {
-                        return true;
-                    }
+                    if (firstPreambleNumber + secondPreambleNumber == numberAfterPreamble) return true;
                 }
             }
 

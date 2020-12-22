@@ -9,6 +9,6 @@
         }
 
         public int RightSteps { get; set; }
-        public int DownSteps { get; set; }  
+        public int DownSteps { get; set; }
     }
 }

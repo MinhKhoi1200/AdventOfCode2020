@@ -13,12 +13,12 @@ namespace AoC2020Classes.Day14
             Content = long.Parse(memoryContentRegex.Match(rawMemoryInstruction).Value);
         }
 
+        public long Address { get; }
+        public long Content { get; }
+
         public override string ToString()
         {
             return $"mem [{Address}] = {Content}";
         }
-
-        public long Address { get; }
-        public long Content { get; }
     }
 }

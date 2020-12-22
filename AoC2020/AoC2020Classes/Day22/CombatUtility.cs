@@ -11,7 +11,7 @@ namespace AoC2020Classes.Day22
         {
             var player1Cards = player1.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList();
             var player2Cards = player2.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList();
-            
+
             var convertedPlayer1Cards = player1Cards.GetRange(1, player1Cards.Count - 1).Select(int.Parse).ToList();
             var convertedPlayer2Cards = player2Cards.GetRange(1, player2Cards.Count - 1).Select(int.Parse).ToList();
 

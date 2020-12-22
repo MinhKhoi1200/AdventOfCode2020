@@ -13,20 +13,20 @@ namespace AoC2020Classes.Day12
             WayPoint = new WayPoint(1, 10);
         }
 
+        public int NorthCoord { get; set; }
+        public int EastCoord { get; set; }
+        public int ManhattanDistFromOrigin => Math.Abs(NorthCoord) + Math.Abs(EastCoord);
+        public WayPoint WayPoint { get; set; }
+        public ShipBearing ShipBearing { get; set; }
+
         public void ExecuteInstructionsList(IEnumerable<ShipInstruction> instructions)
         {
-            foreach (var shipInstruction in instructions)
-            {
-                ExecuteInstruction(shipInstruction);
-            }
+            foreach (var shipInstruction in instructions) ExecuteInstruction(shipInstruction);
         }
 
         public void ExecuteInstructionsListWithWayPoint(IEnumerable<ShipInstruction> instructions)
         {
-            foreach (var shipInstruction in instructions)
-            {
-                ExecuteInstructionWithWayPoint(shipInstruction);
-            }
+            foreach (var shipInstruction in instructions) ExecuteInstructionWithWayPoint(shipInstruction);
         }
 
         public void ExecuteInstruction(ShipInstruction instruction)
@@ -46,10 +46,10 @@ namespace AoC2020Classes.Day12
                     EastCoord -= instruction.UnitsToMove;
                     break;
                 case ShipCommand.TurnLeft:
-                    ShipBearing = ConvertDegreesToShipBearing((int)ShipBearing - instruction.UnitsToMove);
+                    ShipBearing = ConvertDegreesToShipBearing((int) ShipBearing - instruction.UnitsToMove);
                     break;
                 case ShipCommand.TurnRight:
-                    ShipBearing = ConvertDegreesToShipBearing((int)ShipBearing + instruction.UnitsToMove);
+                    ShipBearing = ConvertDegreesToShipBearing((int) ShipBearing + instruction.UnitsToMove);
                     break;
                 case ShipCommand.GoForward:
                     GoForward(instruction.UnitsToMove);
@@ -99,36 +99,19 @@ namespace AoC2020Classes.Day12
             var nsDirection = NorthCoord >= 0 ? "North" : "South";
             var weDirection = EastCoord >= 0 ? "East" : "West";
 
-            return $"Ship - {weDirection} {Math.Abs(EastCoord)}, {nsDirection} {Math.Abs(NorthCoord)}, facing {ShipBearing}";
+            return
+                $"Ship - {weDirection} {Math.Abs(EastCoord)}, {nsDirection} {Math.Abs(NorthCoord)}, facing {ShipBearing}";
         }
-
-        public int NorthCoord { get; set; }
-        public int EastCoord { get; set; }
-        public int ManhattanDistFromOrigin => Math.Abs(NorthCoord) + Math.Abs(EastCoord);
-        public WayPoint WayPoint { get; set; }
-        public ShipBearing ShipBearing { get; set; }
 
         private ShipBearing ConvertDegreesToShipBearing(int degrees)
         {
-            if (degrees % 90 != 0)
-            {
-                return ShipBearing.Unknown;
-            }
-            else
-            {
-                if (degrees < 0)
-                {
-                    return (ShipBearing) 360 + degrees;
-                }
-                else if (degrees >= 360)
-                {
-                    return (ShipBearing) degrees - 360;
-                }
-                else
-                {
-                    return (ShipBearing) degrees;
-                }
-            }
+            if (degrees % 90 != 0) return ShipBearing.Unknown;
+
+            if (degrees < 0)
+                return (ShipBearing) 360 + degrees;
+            if (degrees >= 360)
+                return (ShipBearing) degrees - 360;
+            return (ShipBearing) degrees;
         }
 
         private void GoForward(int unitsToMove)
@@ -153,6 +136,5 @@ namespace AoC2020Classes.Day12
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
     }
 }

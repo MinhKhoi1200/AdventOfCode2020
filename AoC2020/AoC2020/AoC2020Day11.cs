@@ -8,8 +8,10 @@ namespace AoC2020
 {
     public class AoC2020Day11
     {
-        private static readonly string[] Delimiter = { Environment.NewLine };
-        private static readonly List<string> InputList = ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day11InputText.txt", Delimiter);
+        private static readonly string[] Delimiter = {Environment.NewLine};
+
+        private static readonly List<string> InputList =
+            ReadInput.ConvertInputTextToStringList(@"..\..\..\Inputs\Day11InputText.txt", Delimiter);
 
 
         public static void SolvePartOne()
@@ -17,7 +19,7 @@ namespace AoC2020
             var convertedSeatPlan = SeatLayoutCreator.CreateSeatPlan(InputList);
 
             var seatSimulation = new SeatSimulation(convertedSeatPlan);
-            
+
             seatSimulation.RunFullSimulation();
 
             var occupiedSeatsCount = convertedSeatPlan.Sum(row =>
@@ -39,7 +41,6 @@ namespace AoC2020
                 row.Count(eachTile => eachTile.TileStatus == TileStatus.SeatOccupied));
 
             Console.WriteLine(occupiedSeatsCount);
-
         }
     }
 }

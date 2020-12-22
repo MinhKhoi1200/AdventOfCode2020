@@ -18,6 +18,10 @@
             Letter = convertedPasswordPolicy.Letter;
         }
 
+        public int LowerBound { get; set; }
+        public int UpperBound { get; set; }
+        public char Letter { get; set; }
+
         private PasswordPolicy ConvertStringToPasswordPolicy(string passwordPolicyString)
         {
             var slittedPasswordPolicy = passwordPolicyString.Split(' ');
@@ -29,9 +33,5 @@
 
             return new PasswordPolicy(lowerBound, upperBound, letter);
         }
-
-        public int LowerBound { get; set; }
-        public int UpperBound { get; set; }
-        public char Letter { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace AoC2020Classes.Day06
     {
         public GroupResponse(string rawGroupResponse)
         {
-            var delimiter = new string[] {Environment.NewLine};
+            var delimiter = new[] {Environment.NewLine};
             var convertedGroupResponseList =
                 rawGroupResponse.Split(delimiter, StringSplitOptions.RemoveEmptyEntries).ToList();
 
@@ -26,9 +26,7 @@ namespace AoC2020Classes.Day06
             var allYesQuestions = new List<char>();
 
             foreach (var personResponse in PersonResponseList)
-            {
                 allYesQuestions.AddRange(personResponse.YesQuestionsList);
-            }
 
             var uniqueYesQuestions = allYesQuestions.Distinct().ToList();
 
@@ -40,28 +38,19 @@ namespace AoC2020Classes.Day06
             var allYesQuestions = new List<char>();
 
             foreach (var personResponse in PersonResponseList)
-            {
                 allYesQuestions.AddRange(personResponse.YesQuestionsList);
-            }
 
             var yesQuestionsFrequencyDictionary = new Dictionary<char, int>();
 
             foreach (var yesQuestion in allYesQuestions)
-            {
                 if (yesQuestionsFrequencyDictionary.ContainsKey(yesQuestion))
-                {
                     yesQuestionsFrequencyDictionary[yesQuestion] += 1;
-                }
                 else
-                {
                     yesQuestionsFrequencyDictionary.Add(yesQuestion, 1);
-                }
-            }
 
             return (from questionOccurrence in yesQuestionsFrequencyDictionary
                 where questionOccurrence.Value == PersonResponseList.Count
                 select questionOccurrence.Key).ToList();
         }
-
     }
 }
