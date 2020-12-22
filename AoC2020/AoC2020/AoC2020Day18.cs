@@ -24,7 +24,8 @@ namespace AoC2020
         {
             var operatorPrecedence = new Dictionary<string, int>{{"*", 0}, {"+", 1}};
             var sumList = InputList.ConvertAll(i => ExpressionUtility.EvaluateExpression(i, operatorPrecedence));
-            Console.WriteLine(sumList.Sum());        }
+            Console.WriteLine(sumList.Sum());
+        }
 
     }
 }
